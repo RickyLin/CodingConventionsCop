@@ -21,7 +21,7 @@ namespace CodingConventionsCop
             context.RegisterCompilationAction(AnalyzeCompilation);
         }
 
-        private static void AnalyzeCompilation(CompilationAnalysisContext context)
+        private void AnalyzeCompilation(CompilationAnalysisContext context)
         {
             foreach (SyntaxTree st in context.Compilation.SyntaxTrees)
             {

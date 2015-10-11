@@ -9,13 +9,24 @@ namespace CodingConventionsCop
 {
     public static class DiagnosticDescriptors
     {
-        public static readonly DiagnosticDescriptor OneFileOneTypeDeclaration = new DiagnosticDescriptor(
+        public static readonly DiagnosticDescriptor OneFileOneTypeDeclaration = new DiagnosticDescriptor
+        (
             id: DiagnosticIds.OneFileOneTypeDeclaration,
-            title: "Over one type in source code file",
-            messageFormat: "Declare only one type in the source code file",
+            title: "Over one type declared in the source code file",
+            messageFormat: "Declare only one type in a source code file",
             category: DiagnosticCategories.CodingConvention,
             defaultSeverity: DiagnosticSeverity.Warning,
             isEnabledByDefault: true
-            );
+        );
+
+        public static readonly DiagnosticDescriptor NameOfAwaitableMethodEndWithAsync = new DiagnosticDescriptor
+        (
+            id: DiagnosticIds.NameOfAwaitableMethodEndWithAsync,
+            title: "The method name should end with \"Async\" suffix",
+            messageFormat: "The name of an awaitable method should end with \"Async\" suffix",
+            category: DiagnosticCategories.CodingConvention,
+            defaultSeverity: DiagnosticSeverity.Warning,
+            isEnabledByDefault: true
+        );
     }
 }

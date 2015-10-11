@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodingConventionsCop", "Cod
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodingConventionsCop.Tests", "CodingConventionsCop.Tests\CodingConventionsCop.Tests.csproj", "{6BCC45CA-9BF6-40C2-8C79-E370907A4D1A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodingConventionsCop.Vsix", "CodingConventionsCop.Vsix\CodingConventionsCop.Vsix.csproj", "{79FBC93C-A977-483F-B31C-17ABEE95299D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{6BCC45CA-9BF6-40C2-8C79-E370907A4D1A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6BCC45CA-9BF6-40C2-8C79-E370907A4D1A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6BCC45CA-9BF6-40C2-8C79-E370907A4D1A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{79FBC93C-A977-483F-B31C-17ABEE95299D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{79FBC93C-A977-483F-B31C-17ABEE95299D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{79FBC93C-A977-483F-B31C-17ABEE95299D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{79FBC93C-A977-483F-B31C-17ABEE95299D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

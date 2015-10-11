@@ -9,5 +9,6 @@ namespace CodingConventionsCop
     public static class DiagnosticIds
     {
         public const string OneFileOneTypeDeclaration = "CCC0001";
+        public const string NameOfAwaitableMethodEndWithAsync = "CCC0002";
     }
 }

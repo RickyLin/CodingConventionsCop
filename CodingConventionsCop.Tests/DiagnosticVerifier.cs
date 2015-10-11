@@ -75,7 +75,7 @@ namespace CodingConventionsCop.Tests
             return diagnostics.OrderBy(d => d.Location.SourceSpan.Start).ToArray();
         }
 
-        private static Project CreateProject(IEnumerable<string> sourceCodes)
+        private Project CreateProject(IEnumerable<string> sourceCodes)
         {
             ProjectId projectId = ProjectId.CreateNewId(debugName: ADHOC_PROJECT_NAME);
             Solution solution = new AdhocWorkspace()
