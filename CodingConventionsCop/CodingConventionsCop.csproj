@@ -39,10 +39,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IndentWithFourSpacesAnalyzer.cs" />
+    <Compile Include="IndentWithFourSpacesCodeFixProvider.cs" />
     <Compile Include="NameOfAwaitableMethodEndWithAsyncAnalyzer.cs" />
     <Compile Include="DiagnosticCategories.cs" />
     <Compile Include="DiagnosticDescriptors.cs" />
     <Compile Include="DiagnosticIds.cs" />
+    <Compile Include="NameOfAwaitableMethodEndWithAsyncCodeFixProvider.cs" />
     <Compile Include="OneFileOneTypeDeclarationAnalyzer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
