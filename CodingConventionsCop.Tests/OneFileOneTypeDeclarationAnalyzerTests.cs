@@ -20,7 +20,7 @@ using System.Threading.Tasks;
 namespace ConsoleApplication1
 {
     class Program
-    {   
+    {
     }
 }";
             VerifyNoDiagnostic(test);
@@ -38,7 +38,7 @@ using System.Threading.Tasks;
 namespace ConsoleApplication1
 {
     Struct MyStruct
-    {   
+    {
     }
 }";
             VerifyNoDiagnostic(test);
@@ -56,7 +56,7 @@ using System.Threading.Tasks;
 namespace ConsoleApplication1
 {
     class Program
-    {   
+    {
     }
 
     struct MyStruct
@@ -78,7 +78,7 @@ using System.Threading.Tasks;
 namespace ConsoleApplication1
 {
     class Program
-    {   
+    {
     }
 
     interface IMyInterface
@@ -100,7 +100,7 @@ using System.Threading.Tasks;
 namespace ConsoleApplication1
 {
     class Program
-    {   
+    {
     }
 
     enum MyEnum

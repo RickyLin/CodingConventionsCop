@@ -19,30 +19,31 @@ namespace CodingConventionsCop
 
         public override void Initialize(AnalysisContext context)
         {
-            context.RegisterCompilationAction(AnalyzeCompilation);
+            context.RegisterSemanticModelAction(AnalyzeSemanticModel);
         }
 
-        private void AnalyzeCompilation(CompilationAnalysisContext context)
+        private void AnalyzeSemanticModel(SemanticModelAnalysisContext context)
         {
-            foreach (SyntaxTree st in context.Compilation.SyntaxTrees.Where(t => !IsMvcController(t.FilePath)))
-            {
-                CompilationUnitSyntax rootSyntax = st.GetRoot() as CompilationUnitSyntax;
-                if (rootSyntax == null)
-                    continue;
+            SyntaxTree st = context.SemanticModel.SyntaxTree;
+            if (IsMvcController(st.FilePath))
+                return;
 
-                IEnumerable<MethodDeclarationSyntax> methodDeclarations = rootSyntax.DescendantNodes().OfType<MethodDeclarationSyntax>();
-                if (methodDeclarations.Count() == 0)
-                    continue;
-                SemanticModel semanticModel = context.Compilation.GetSemanticModel(st);
-                SymbolInfo symbolInfo;
-                foreach (MethodDeclarationSyntax methodDeclaration in methodDeclarations)
+            CompilationUnitSyntax rootSyntax = st.GetRoot() as CompilationUnitSyntax;
+            if (rootSyntax == null)
+                return;
+
+            IEnumerable<MethodDeclarationSyntax> methodDeclarations = rootSyntax.DescendantNodes().OfType<MethodDeclarationSyntax>();
+            if (methodDeclarations.Count() == 0)
+                return;
+
+            SymbolInfo symbolInfo;
+            foreach (MethodDeclarationSyntax methodDeclaration in methodDeclarations)
+            {
+                symbolInfo = context.SemanticModel.GetSymbolInfo(methodDeclaration.ReturnType);
+                if (symbolInfo.Symbol?.Name == "Task" && !methodDeclaration.Identifier.Text.EndsWith("Async"))
                 {
-                    symbolInfo = semanticModel.GetSymbolInfo(methodDeclaration.ReturnType);
-                    if (symbolInfo.Symbol.Name == "Task" && !methodDeclaration.Identifier.Text.EndsWith("Async"))
-                    {
-                        context.ReportDiagnostic(Diagnostic.Create(DiagnosticDescriptors.NameOfAwaitableMethodEndWithAsync
-                            , methodDeclaration.Identifier.GetLocation()));
-                    }
+                    context.ReportDiagnostic(Diagnostic.Create(DiagnosticDescriptors.NameOfAwaitableMethodEndWithAsync
+                        , methodDeclaration.Identifier.GetLocation()));
                 }
             }
         }

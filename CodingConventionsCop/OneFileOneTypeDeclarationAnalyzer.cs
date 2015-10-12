@@ -18,30 +18,28 @@ namespace CodingConventionsCop
 
         public override void Initialize(AnalysisContext context)
         {
-            context.RegisterCompilationAction(AnalyzeCompilation);
+            context.RegisterSyntaxTreeAction(AnalyzeCompilation);
         }
 
-        private void AnalyzeCompilation(CompilationAnalysisContext context)
+        private void AnalyzeCompilation(SyntaxTreeAnalysisContext context)
         {
-            foreach (SyntaxTree st in context.Compilation.SyntaxTrees)
-            {
-                CompilationUnitSyntax rootSyntax = st.GetRoot() as CompilationUnitSyntax;
-                if (rootSyntax == null)
-                    continue;
+            CompilationUnitSyntax rootSyntax = context.Tree.GetRoot() as CompilationUnitSyntax;
+            if (rootSyntax == null)
+                return;
 
-                IEnumerable<BaseTypeDeclarationSyntax> typeDeclarations = rootSyntax.DescendantNodes().OfType<BaseTypeDeclarationSyntax>();
-                int typeDeclarationsCount = typeDeclarations.Count();
-                if (typeDeclarationsCount > 1)
+            IEnumerable<BaseTypeDeclarationSyntax> typeDeclarations = rootSyntax.DescendantNodes().OfType<BaseTypeDeclarationSyntax>();
+            int typeDeclarationsCount = typeDeclarations.Count();
+            if (typeDeclarationsCount > 1)
+            {
+                int index = 0;
+                foreach (BaseTypeDeclarationSyntax td in typeDeclarations)
                 {
-                    int index = 0;
-                    foreach (BaseTypeDeclarationSyntax td in typeDeclarations)
-                    {
-                        if (index++ == 0)
-                            continue;
-                        context.ReportDiagnostic(Diagnostic.Create(DiagnosticDescriptors.OneFileOneTypeDeclaration, td.GetLocation()));
-                    }
+                    if (index++ == 0)
+                        continue;
+                    context.ReportDiagnostic(Diagnostic.Create(DiagnosticDescriptors.OneFileOneTypeDeclaration, td.GetLocation()));
                 }
             }
+
         }
     }
 }

@@ -7,6 +7,7 @@
 It includes the following coding conventions:
     1. One source file has only one type declaration.
     2. The name of an awaitable method should end with Async suffix.
+    3. Indent with 4 spaces instead of 1 tab.
         </Description>
     </Metadata>
     <Installation>

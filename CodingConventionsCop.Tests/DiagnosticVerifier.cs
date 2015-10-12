@@ -80,7 +80,7 @@ namespace CodingConventionsCop.Tests
             ProjectId projectId = ProjectId.CreateNewId(debugName: ADHOC_PROJECT_NAME);
             Solution solution = new AdhocWorkspace()
                 .CurrentSolution
-                .AddProject(projectId, ADHOC_PROJECT_NAME, ADHOC_PROJECT_NAME, "C#")
+                .AddProject(projectId, ADHOC_PROJECT_NAME, ADHOC_PROJECT_NAME, LanguageNames.CSharp)
                 .AddMetadataReferences(projectId, new[]
                 {
                     CorlibReference,

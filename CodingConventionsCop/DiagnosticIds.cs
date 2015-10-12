@@ -10,5 +10,6 @@ namespace CodingConventionsCop
     {
         public const string OneFileOneTypeDeclaration = "CCC0001";
         public const string NameOfAwaitableMethodEndWithAsync = "CCC0002";
+        public const string IndentWithFourSpaces = "CCC0003";
     }
 }

@@ -28,5 +28,15 @@ namespace CodingConventionsCop
             defaultSeverity: DiagnosticSeverity.Warning,
             isEnabledByDefault: true
         );
+
+        public static readonly DiagnosticDescriptor IndentWithFourSpaces = new DiagnosticDescriptor
+        (
+            id: DiagnosticIds.IndentWithFourSpaces,
+            title: "Indent with 4 spaces rather than 1 tab",
+            messageFormat: "Indent with 4 spaces instead of 1 tab",
+            category: DiagnosticCategories.CodingConvention,
+            defaultSeverity: DiagnosticSeverity.Warning,
+            isEnabledByDefault: true
+        );
     }
 }

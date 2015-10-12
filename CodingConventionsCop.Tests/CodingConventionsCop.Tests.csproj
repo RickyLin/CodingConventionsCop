@@ -98,6 +98,7 @@
   </Choose>
   <ItemGroup>
     <Compile Include="DiagnosticVerifier.cs" />
+    <Compile Include="IndentWithFourSpacesAnalyzerTests.cs" />
     <Compile Include="OneFileOneTypeDeclarationAnalyzerTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
