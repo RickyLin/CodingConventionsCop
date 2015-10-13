@@ -32,7 +32,7 @@ namespace CodingConventionsCop
                     CodeAction.Create
                     (
                         CODE_FIX_TITLE,
-                        c => AppendAsyncSuffixToMethodName(context.Document, root, methodNameToken, c),
+                        c => AppendAsyncSuffixToMethodNameAsync(context.Document, root, methodNameToken, c),
                         CODE_FIX_TITLE
                     ),
                     diagnostic
@@ -44,7 +44,7 @@ namespace CodingConventionsCop
             return WellKnownFixAllProviders.BatchFixer;
         }
 
-        private Task<Document> AppendAsyncSuffixToMethodName(Document document, SyntaxNode root, SyntaxToken methodNameToken
+        private Task<Document> AppendAsyncSuffixToMethodNameAsync(Document document, SyntaxNode root, SyntaxToken methodNameToken
             , CancellationToken cancellationToken)
         {
             string methodName = methodNameToken.Text;

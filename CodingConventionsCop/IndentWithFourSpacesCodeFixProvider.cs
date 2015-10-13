@@ -31,7 +31,7 @@ namespace CodingConventionsCop
                 (
                     CodeAction.Create(
                         CODE_FIX_TITLE,
-                        c => ReplaceTabWithFourSpaces(context.Document, root, tabTrivia, c),
+                        c => ReplaceTabWithFourSpacesAsync(context.Document, root, tabTrivia, c),
                         CODE_FIX_TITLE),
                     diagnostic
                 );
@@ -42,10 +42,10 @@ namespace CodingConventionsCop
             return WellKnownFixAllProviders.BatchFixer;
         }
 
-        private Task<Document> ReplaceTabWithFourSpaces(Document document, SyntaxNode root, SyntaxTrivia tabTrivia
+        private Task<Document> ReplaceTabWithFourSpacesAsync(Document document, SyntaxNode root, SyntaxTrivia tabTrivia
             , CancellationToken cancellationToken)
         {
-            SyntaxTrivia fourSpacesTrivia = SyntaxFactory.Whitespace("    ");
+            SyntaxTrivia fourSpacesTrivia = SyntaxFactory.Whitespace(new string(' ', 4 * tabTrivia.Span.Length));
             SyntaxNode newRoot = root.ReplaceTrivia(tabTrivia, fourSpacesTrivia);
             return Task.FromResult(document.WithSyntaxRoot(newRoot));
         }
