@@ -25,7 +25,7 @@ namespace CodingConventionsCop
         private void AnalyzeSemanticModel(SemanticModelAnalysisContext context)
         {
             SyntaxTree st = context.SemanticModel.SyntaxTree;
-            if (IsMvcController(st.FilePath))
+            if (IgnoreSourceDocumentFile(st.FilePath))
                 return;
 
             CompilationUnitSyntax rootSyntax = st.GetRoot() as CompilationUnitSyntax;
@@ -48,16 +48,14 @@ namespace CodingConventionsCop
             }
         }
 
-        private bool IsMvcController(string filePath)
+        private bool IgnoreSourceDocumentFile(string filePath)
         {
-            /*
-            string fileName = Path.GetFileNameWithoutExtension(filePath);
-            return fileName.EndsWith("Controller", StringComparison.OrdinalIgnoreCase)
-                && !fileName.EndsWith("DataController", StringComparison.OrdinalIgnoreCase);
-            */
-
-            return filePath.EndsWith("Controller.cs", StringComparison.OrdinalIgnoreCase)
+            bool isController = filePath.EndsWith("Controller.cs", StringComparison.OrdinalIgnoreCase)
                 && !filePath.EndsWith("DataController.cs", StringComparison.OrdinalIgnoreCase);
+
+            bool isMiddleware = filePath.EndsWith("Middleware.cs", StringComparison.OrdinalIgnoreCase);
+
+            return isController || isMiddleware;
         }
     }
 }
