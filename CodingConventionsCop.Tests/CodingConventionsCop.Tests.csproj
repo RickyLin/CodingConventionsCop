@@ -103,7 +103,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Analyzer Include="..\packages\Microsoft.CodeAnalysis.Analyzers.1.0.0\analyzers\dotnet\cs\Microsoft.CodeAnalysis.Analyzers.dll" />
@@ -111,7 +113,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CodingConventionsCop\CodingConventionsCop.csproj">
-      <Project>{542bbd26-1ab5-404e-8230-58ee9d0621cc}</Project>
+      <Project>{95fccd8c-3eb6-4bec-954d-d22b13e6a2f9}</Project>
       <Name>CodingConventionsCop</Name>
     </ProjectReference>
   </ItemGroup>
